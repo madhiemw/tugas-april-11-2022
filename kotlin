@@ -1,0 +1,112 @@
+class Lamp {
+
+    // property (data member)
+    private var isOn: Boolean = false
+
+    // member function
+    fun turnOn() {
+        isOn = true
+    }
+
+    // member function
+    fun turnOff() {
+        isOn = false
+    }
+
+    fun displayLightStatus() {
+        if (isOn == true)
+            println("lamp is on.")
+        else
+            println("lamp is off.")
+    }
+}
+fun constructor() {
+    val person1 = Person("Joe", 25)
+
+    println("First Name = ${person1.firstName}")
+    println("Age = ${person1.age}")
+}
+class Person(val firstName: String, var age: Int) {
+
+}
+
+fun getters() {
+
+    val maria = Girl()
+    maria.actualAge = 15
+    maria.age = 15
+    println("Maria: actual age = ${maria.actualAge}")
+    println("Maria: pretended age = ${maria.age}")
+
+    val angela = Girl()
+    angela.actualAge = 35
+    angela.age = 35
+    println("Angela: actual age = ${angela.actualAge}")
+    println("Angela: pretended age = ${angela.age}")
+}
+
+class Girl {
+    var age: Int = 0
+        get() = field
+        set(value) {
+            field = if (value < 18)
+                18
+            else if (value >= 18 && value <= 30)
+                value
+            else
+                value-3
+        }
+
+    var actualAge: Int = 0
+}
+open class Person(age: Int, name: String) {
+    init {
+        println("My name is $name.")
+        println("My age is $age")
+    }
+}
+class MathTeacher(age: Int, name: String): Person(age, name) {
+
+    fun teachMaths() {
+        println("I teach in primary school.")
+    }
+fun inheritance(args: Array<String>) {
+    val t1 = MathTeacher(25, "Jack")
+    t1.teachMaths()
+
+    println()
+}}
+open class Base() {
+    var a = 1                 
+    private var b = 2
+    protected open val c = 3  
+    internal val d = 4       
+
+    protected fun e() { }     
+}
+
+class Derived: Base() {
+
+
+    override val c = 9        
+}
+
+fun modifier (args: Array<String>) {
+    val base = Base()
+
+    // base.a and base.d are visible
+    // base.b, base.c and base.e() are not visible
+
+    val derived = Derived()
+    // derived.c is not visible
+}
+fun main(args: Array<String>) {
+    getters()
+
+    val t1 = MathTeacher(25, "Jack")
+    t1.teachMaths()
+    println()
+
+    val lamp = Lamp()
+    lamp.displayLightStatus()
+}
